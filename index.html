@@ -1,0 +1,184 @@
+<!--
+1-month-scrapbook.html
+Single-file offline scrapbook for your 1-month anniversary.
+How to use:
+  1. Save this file locally (e.g., 1-month-scrapbook.html).
+  2. Create a folder called `images` next to it and put your photos there (e.g., images/photo1.jpg).
+  3. Replace the src attributes on .polaroid <img> elements with your own images or keep the placeholders.
+  4. Open the file in a browser (double-click) — it works fully offline.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>1 Month of Us ❤️</title>
+  <style>
+    /* --- Reset & base --- */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Lucida Grande", Tahoma, sans-serif;
+      background: linear-gradient(135deg,#fff6f8 0%, #fff9f2 50%);
+      color:#333;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:30px;
+    }
+
+    /* subtle paper texture using repeating-radial-gradient */
+    body::before{
+      content:'';
+      position:fixed;inset:0;pointer-events:none;
+      background-image:radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+      background-size:20px 20px;opacity:0.35;
+      mix-blend-mode:overlay;
+    }
+
+    .wrap{
+      max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;
+    }
+
+    header{
+      grid-column:1/-1;text-align:center;margin-bottom:8px;
+    }
+
+    h1{
+      margin:8px 0 6px;font-size:34px;letter-spacing:0.3px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color:#b33b5a;
+    }
+    p.lead{margin:0;color:#6b4450}
+
+    /* left scrapbook area */
+    .scrap{
+      background:rgba(255,255,255,0.6);padding:22px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      min-height:520px;position:relative;overflow:hidden;
+    }
+
+    /* polaroid photo style */
+    .polaroids{display:flex;flex-wrap:wrap;gap:18px}
+    .polaroid{
+      width:150px;background:#fff;padding:12px 12px 28px;border-radius:6px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.12);transform-origin:center center;transition:transform .25s ease;
+      position:relative;
+    }
+    .polaroid img{display:block;width:100%;height:110px;object-fit:cover;border-radius:4px}
+    .caption{text-align:center;margin-top:8px;font-size:13px;color:#7a5962}
+
+    /* slight rotations for that scattered feel */
+    .polaroid:nth-child(1){transform:rotate(-6deg)}
+    .polaroid:nth-child(2){transform:rotate(5deg)}
+    .polaroid:nth-child(3){transform:rotate(-3deg)}
+    .polaroid:nth-child(4){transform:rotate(7deg)}
+    .polaroid:hover{transform:scale(1.06) rotate(0deg);z-index:5}
+
+    /* right column: message/card */
+    .card{
+      background:linear-gradient(180deg,#fff 0%, #fffefb 100%);padding:20px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.08);
+    }
+    .date{font-size:13px;color:#8a636f;margin-bottom:8px}
+    .message{font-size:15px;line-height:1.5;color:#4a2c34}
+
+    /* floating hearts */
+    .heart-wrap{position:absolute;inset:0;pointer-events:none}
+    .heart{position:absolute;width:18px;height:18px;transform:translate(-50%,-50%);opacity:0.9}
+    .heart svg{width:100%;height:100%;display:block}
+
+    /* animate multiple hearts with different delays and sizes */
+    @keyframes floatUp{0%{transform:translateY(20vh) scale(0.6) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(-30vh) scale(1.1) rotate(45deg);opacity:0}}
+
+    .heart--1{left:10%;bottom:10%;animation:floatUp 6s linear infinite}
+    .heart--2{left:40%;bottom:5%;animation:floatUp 5.2s linear 0.6s infinite}
+    .heart--3{left:70%;bottom:18%;animation:floatUp 6.8s linear 0.2s infinite}
+    .heart--4{left:85%;bottom:8%;animation:floatUp 7.4s linear 1s infinite}
+
+    /* timeline strip at the bottom */
+    .timeline{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:18px}
+    .milestone{background:rgba(255,255,255,0.85);padding:8px 12px;border-radius:999px;font-size:13px;box-shadow:0 6px 14px rgba(0,0,0,0.06)}
+
+    /* responsive */
+    @media (max-width:880px){
+      .wrap{grid-template-columns:1fr;}
+      .scrap{min-height:420px}
+      .polaroid{width:140px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>1 Month of Us ❤️</h1>
+      <p class="lead">A tiny keepsake — memories, photos, and a short love note.</p>
+    </header>
+
+    <section class="scrap">
+      <div class="polaroids">
+        <!-- Replace src values with your own pictures, e.g. images/photo1.jpg -->
+        <figure class="polaroid">
+          <img src="photos/A.jpg" alt="photo 1" onerror="this.style.filter='grayscale(60%)';this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=600 height=400><rect width=100% height=100% fill=%22%23f6d5df%22/></svg>'"/>
+          <figcaption class="caption">Silly Faces ❤️</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="photos/B.jpg" alt="photo 2" onerror="this.style.filter='grayscale(60%)';this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=600 height=400><rect width=100% height=100% fill=%22%23fbe9e8%22/></svg>'"/>
+          <figcaption class="caption">That rainy day concert ❤️</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="photos/C.jpg" alt="photo 3" onerror="this.style.filter='grayscale(60%)';this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=600 height=400><rect width=100% height=100% fill=%22%23fff0f3%22/></svg>'"/>
+          <figcaption class="caption">Steak Night Date ❤️</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="photos/D.jpg" alt="photo 4" onerror="this.style.filter='grayscale(60%)';this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=600 height=400><rect width=100% height=100% fill=%22%23ffeef2%22/></svg>'"/>
+          <figcaption class="caption">Late-night call ❤️</figcaption>
+        </figure>
+      </div>
+
+      <div class="heart-wrap" aria-hidden="true">
+        <div class="heart heart--1"> <!-- small heart svg -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.2-4.686-9.2-7.057C-0.04 10.41 3.5 6 7.5 7.5 9.4 8.2 11.1 9.8 12 11c.9-1.2 2.6-2.8 4.5-3.5 4-1.5 7.54 3.09 4.7 6.9C19.2 16.314 12 21 12 21z" fill="#ff7aa2"/></svg>
+        </div>
+        <div class="heart heart--2">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.2-4.686-9.2-7.057C-0.04 10.41 3.5 6 7.5 7.5 9.4 8.2 11.1 9.8 12 11c.9-1.2 2.6-2.8 4.5-3.5 4-1.5 7.54 3.09 4.7 6.9C19.2 16.314 12 21 12 21z" fill="#ff9fb3"/></svg>
+        </div>
+        <div class="heart heart--3">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.2-4.686-9.2-7.057C-0.04 10.41 3.5 6 7.5 7.5 9.4 8.2 11.1 9.8 12 11c.9-1.2 2.6-2.8 4.5-3.5 4-1.5 7.54 3.09 4.7 6.9C19.2 16.314 12 21 12 21z" fill="#ffd1de"/></svg>
+        </div>
+        <div class="heart heart--4">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.2-4.686-9.2-7.057C-0.04 10.41 3.5 6 7.5 7.5 9.4 8.2 11.1 9.8 12 11c.9-1.2 2.6-2.8 4.5-3.5 4-1.5 7.54 3.09 4.7 6.9C19.2 16.314 12 21 12 21z" fill="#ffb3c7"/></svg>
+        </div>
+      </div>
+
+      <div class="timeline" aria-hidden="true">
+        <div class="milestone">Match: Mar 29</div>
+        <div class="milestone">First date: Apr 5</div>
+        <div class="milestone">Official: Jul 12</div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <div class="date">Officially: <strong>1 month</strong> — <small>Aug 12, 2025</small></div>
+      <div class="message">
+        Hi Sweetheart, <br><br>
+        One month down and a million memories to go. Thank you for being kind, for your silly laughs, and for holding my hand when I need it. Here's to more late-night snacks, long walks, and mornings together.<br><br>
+        — Yours ❤️
+      </div>
+    </aside>
+  </div>
+
+  <!-- small inline script to open an image when clicked (works offline) -->
+  <script>
+    document.querySelectorAll('.polaroid img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        // open image in new tab/window so user can view full size locally
+        const src = img.getAttribute('src');
+        if(src) window.open(src, '_blank');
+      })
+    })
+  </script>
+</body>
+</html>
